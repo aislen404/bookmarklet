@@ -1,4 +1,4 @@
-function polpot() {
+function() {
     "use strict";
     var test = {
         testScript: {
