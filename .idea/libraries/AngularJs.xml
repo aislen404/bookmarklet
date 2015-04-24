@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="AngularJs" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$USER_HOME$/bower_components/angular/angular.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$USER_HOME$/bower_components/angular/angular.js" />
+      <root url="file://$USER_HOME$/bower_components/angular/angular.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
