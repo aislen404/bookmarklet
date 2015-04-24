@@ -1,2 +1,1 @@
-$GIT_DIR/.git
-$GIT_DIR/.idea
+*.idea/
