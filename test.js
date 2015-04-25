@@ -60,7 +60,8 @@ function TestSets() {
 }
 
 check_browser_detection = function() {
-        return _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
+    var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
+    return _renderMode
 };
 
 /* feedback helper */
