@@ -53,15 +53,11 @@ function TestSets() {
         this.n_scripts = wT;
         log.add('Render Mode: ' + check_browser_detection);
     };
-
-    this.feedback = function() {
-        log.add("I am a " + this.n_scripts + " nºscript");
-    };
 }
 
 check_browser_detection = function() {
-    var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
-    return _renderMode
+    var _renderMode = (document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks');
+    return _renderMode;
 };
 
 /* feedback helper */
@@ -93,6 +89,6 @@ function run() {
     var test_4_specific = testFactory.construct(specific);
 
     //test_4_all.feedback();
-    test_4_specific.feedback();
+    //test_4_specific.feedback();
     log.show();
 }
