@@ -58,7 +58,7 @@ function TestSets() {
     };
 }
 
-check_browser_detection = function () {
+function check_browser_detection () {
     var _renderMode = document.compatMode==='CSS1Compat'?'Standards':'Quirks';
     log.add('Render Mode: ' + _renderMode);
     return 'OK de PUTA MADRE';
