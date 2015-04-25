@@ -1,10 +1,18 @@
+/**
+ * Created by Aislen404 on 25/4/15.
+ * test scripting in bookmarklet
+ * focused on the analisys of compatibility with IE11
+ * allows you to check the page that you are just visiting
+ */
+
+/*constructs test plans by using the fullTest(plan) o SpecificTest(plan) interface*/
 function TestFactory() {
     this.construct = function(__testPlan) {
         __testPlan.execute();
         return __testPlan.get();
     }
 }
-
+/* fullTest(plan) interface */
 function FullTest() {
     this.AllScripts = null;
 
@@ -18,7 +26,8 @@ function FullTest() {
     };
 }
 
-function EspecificTest(whatTest){
+/* Specific(plan) interface */
+function SpecificTest(whatTest){
     this.ThatScript = null;
 
     this.execute = function() {
@@ -31,6 +40,7 @@ function EspecificTest(whatTest){
     };
 }
 
+/* controls the execution and feedback of the script test to being tested */
 function TestPlan() {
     this.n_scripts = 0;
 
@@ -42,13 +52,12 @@ function TestPlan() {
         this.n_scripts = wT;
     };
 
-    this.say = function() {
+    this.feedback = function() {
         log.add("I am a " + this.n_scripts + " nºscript");
     };
 }
 
-
-// log helper
+/* feedback helper */
 var log = (function () {
     var log = "";
     return {
@@ -57,19 +66,19 @@ var log = (function () {
     }
 })();
 
+/* main program */
 function run() {
     var testFactory = new TestFactory();
 
-    var all_prueba = new FullTest();
-    var especific_prueba = new EspecificTest('check_browser_detection');
-    //TODO: Meter como parametro el test plan especifico.
+    var all = new FullTest();
+    var specific = new SpecificTest('check_browser_detection');
 
 
 
-    var resultado_all_prueba = testFactory.construct(all_prueba);
-    var resultado_especific_prueba = testFactory.construct(especific_prueba);
+    var test_4_all = testFactory.construct(all);
+    var test_4_specific = testFactory.construct(specific);
 
-    resultado_all_prueba.say();
-    resultado_especific_prueba.say();
+    test_4_all.feedback();
+    test_4_specific.feedback();
     log.show();
 }
