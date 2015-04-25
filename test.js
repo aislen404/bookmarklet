@@ -7,9 +7,9 @@
 
 /*constructs test plans by using the fullTest(plan) o SpecificTest(plan) interface*/
 function TestFactory() {
-    this.construct = function(__testPlan) {
-        __testPlan.execute();
-        return __testPlan.get();
+    this.construct = function(testPlan) {
+        testPlan.execute();
+        return testPlan.get();
     }
 }
 
@@ -18,7 +18,7 @@ function FullTest() {
     this.AllScripts = null;
 
     this.execute = function() {
-        this.AllScripts = new TestPlan();
+        this.AllScripts = new TestSets();
         this.AllScripts.runAll();
     };
 
@@ -32,7 +32,7 @@ function SpecificTest(whatTest){
     this.ThatScript = null;
 
     this.execute = function() {
-        this.ThatScript = new TestPlan();
+        this.ThatScript = new TestSets();
         this.ThatScript.runEspecific(whatTest);
     };
 
@@ -42,7 +42,7 @@ function SpecificTest(whatTest){
 }
 
 /* controls the execution and feedback of the script test to being tested */
-function TestPlan() {
+function TestSets() {
     this.n_scripts = 0;
 
     this.runAll = function() {
@@ -50,15 +50,22 @@ function TestPlan() {
     };
 
     this.runEspecific = function (wT){
-        this.n_scripts = wT;
-        log.add('You are in ' + (document.compatMode==='CSS1Compat'?'Standards':'Quirks') + ' mode.');
-
+        this.n_scripts = eval(wT);
     };
 
     this.feedback = function() {
         log.add("I am a " + this.n_scripts + " nºscript");
     };
 }
+
+check_browser_detection = function() {
+
+    var _renderMode = document.compatMode==='CSS1Compat'?'Standards':'Quirks';
+    log.add('Render Mode: ' + _renderMode);
+
+    return 'OK de PUTA MADRE';
+
+};
 
 /* feedback helper */
 var log = (function () {
