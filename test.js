@@ -51,7 +51,7 @@ function TestSets() {
 
     this.runEspecific = function (wT){
         this.n_scripts = wT;
-        check_browser_detection;
+        log.add('Render Mode: ' + check_browser_detection);
     };
 
     this.feedback = function() {
@@ -60,9 +60,7 @@ function TestSets() {
 }
 
 check_browser_detection = function() {
-
-        var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
-        log.add('Render Mode: ' + _renderMode);
+        return _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
 };
 
 /* feedback helper */
