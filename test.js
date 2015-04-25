@@ -50,7 +50,7 @@ function TestSets() {
     };
 
     this.runEspecific = function (wT){
-        this.n_scripts = wT.execTest();
+        this.n_scripts = wT();
     };
 
     this.feedback = function() {
@@ -58,13 +58,10 @@ function TestSets() {
     };
 }
 
-  check_browser_detection = function () {
-
-    this.execTest = function(){
-        var _renderMode = document.compatMode==='CSS1Compat'?'Standards':'Quirks';
-        log.add('Render Mode: ' + _renderMode);
-        return 'OK de PUTA MADRE';
-    };
+check_browser_detection = function () {
+    var _renderMode = document.compatMode==='CSS1Compat'?'Standards':'Quirks';
+    log.add('Render Mode: ' + _renderMode);
+    return 'OK de PUTA MADRE';
 };
 
 /* feedback helper */
