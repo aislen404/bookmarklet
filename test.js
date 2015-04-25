@@ -85,13 +85,13 @@ function run() {
         'check_w3c_validator'
     ];
 
-    var all = new FullTest();
+    //var all = new FullTest();
     var specific = new SpecificTest(testPlans[0]);
 
-    var test_4_all = testFactory.construct(all);
+    //var test_4_all = testFactory.construct(all);
     var test_4_specific = testFactory.construct(specific);
 
-    test_4_all.feedback();
+    //test_4_all.feedback();
     test_4_specific.feedback();
     log.show();
 }
