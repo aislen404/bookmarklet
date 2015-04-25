@@ -51,7 +51,7 @@ function TestSets() {
 
     this.runEspecific = function (wT){
         this.n_scripts = new wT();
-        wT.execTest();
+        this.n_scripts.execTest();
     };
 
     this.feedback = function() {
