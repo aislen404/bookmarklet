@@ -65,7 +65,7 @@ check_browser_detection = function () {
         log.add('Render Mode: ' + _renderMode);
         return 'OK de PUTA MADRE';
     };
-}
+};
 
 /* feedback helper */
 var log = (function () {
