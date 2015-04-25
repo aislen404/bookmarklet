@@ -18,15 +18,32 @@ function FullTest() {
     };
 }
 
+function EspecificTest(){
+    this.ThatScript = null;
+
+    this.execute = function() {
+        this.ThatScript = new TestPlan();
+        this.ThatScript.runEspecific();
+    };
+
+    this.get = function() {
+        return this.ThatScript;
+    };
+}
+
 function TestPlan() {
     this.n_scripts = 0;
 
     this.runAll = function() {
-        this.n_scripts = 7;
+        this.n_scripts = 'all';
+    };
+
+    this.runEspecific = function (){
+        this.n_scripts = 'check_browser_detection';
     };
 
     this.say = function() {
-        log.add("I am a " + this.n_scripts + "-nºscript --> AllScripts");
+        log.add("I am a " + this.n_scripts + " nºscript");
     };
 }
 
@@ -41,12 +58,18 @@ var log = (function () {
 })();
 
 function run() {
-    var prueba = new TestFactory();
-    var allprueba = new FullTest();
-    var resultado = prueba.construct(allprueba);
+    var testFactory = new TestFactory();
+
+    var all_prueba = new FullTest();
+    var especific_prueba = new EspecificTest();
+    //TODO: Meter como parametro el test plan especifico.
 
 
-    resultado.say();
 
+    var resultado_all_prueba = testFactory.construct(all_prueba);
+    var resultado_especific_prueba = testFactory.construct(especific_prueba);
+
+    resultado_all_prueba.say();
+    resultado_especific_prueba.say();
     log.show();
 }
