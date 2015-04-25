@@ -18,12 +18,12 @@ function FullTest() {
     };
 }
 
-function EspecificTest(){
+function EspecificTest(whatTest){
     this.ThatScript = null;
 
     this.execute = function() {
         this.ThatScript = new TestPlan();
-        this.ThatScript.runEspecific();
+        this.ThatScript.runEspecific(whatTest);
     };
 
     this.get = function() {
@@ -38,8 +38,8 @@ function TestPlan() {
         this.n_scripts = 'all';
     };
 
-    this.runEspecific = function (){
-        this.n_scripts = 'check_browser_detection';
+    this.runEspecific = function (wT){
+        this.n_scripts = wT;
     };
 
     this.say = function() {
@@ -61,7 +61,7 @@ function run() {
     var testFactory = new TestFactory();
 
     var all_prueba = new FullTest();
-    var especific_prueba = new EspecificTest();
+    var especific_prueba = new EspecificTest('check_browser_detection');
     //TODO: Meter como parametro el test plan especifico.
 
 
