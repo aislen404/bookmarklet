@@ -15,13 +15,12 @@ test = function(){
         5:'check-pluginfree.js',
         6:'check-w3c-validator.js'
     };
+
+    createTest = function (){
+        alert (this.testScript[0]);
+    };
+
+    return this;
 };
 
-testSuite = function() {
-    alert(test.testScript[0]());
-};
-
-test.createTest = function() {
-    return new testSuite();
-};
 
