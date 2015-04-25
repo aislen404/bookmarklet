@@ -1,66 +1,31 @@
-function Shop() {
-    this.construct = function(builder) {
-        builder.step1();
-        builder.step2();
-        return builder.get();
+function TestFactory() {
+    this.testPlan = function(test) {
+        test.execute();
+        return test.get();
     }
 }
 
-function CarBuilder() {
-    this.car = null;
+function fullTest () {
+    this.test = 0;
 
-    this.step1 = function() {
-        this.car = new Car();
-    };
-
-    this.step2 = function() {
-        this.car.addParts();
+    this.execute = function() {
+        this.test = new Step();
     };
 
     this.get = function() {
-        return this.car;
+        return this.test;
     };
 }
 
-function TruckBuilder() {
-    this.truck = null;
 
-    this.step1 = function() {
-        this.truck = new Truck();
-    };
-
-    this.step2 = function() {
-        this.truck.addParts();
-    };
-
-    this.get = function() {
-        return this.truck;
-    };
-}
-
-function Car() {
-    this.doors = 0;
-
-    this.addParts = function() {
-        this.doors = 4;
-    };
-
+function Step() {
+    this.result = 0;
     this.say = function() {
-        log.add("I am a " + this.doors + "-door car");
+        log.add("I am a " + this.result );
     };
 }
 
-function Truck() {
-    this.doors = 0;
 
-    this.addParts = function() {
-        this.doors = 2;
-    };
-
-    this.say = function() {
-        log.add("I am a " + this.doors + "-door truck");
-    };
-}
 
 // log helper
 var log = (function () {
@@ -72,14 +37,10 @@ var log = (function () {
 })();
 
 function run() {
-    var shop = new Shop();
-    var carBuilder = new CarBuilder();
-    var truckBuilder = new TruckBuilder();
-    var car = shop.construct(carBuilder);
-    var truck = shop.construct(truckBuilder);
+    var testFactory = new TestFactory();
 
-    car.say();
-    truck.say();
+    var testing = testFactory.testPlan(fullTest);
 
+    testing.say();
     log.show();
 }
