@@ -51,12 +51,13 @@ function TestSets() {
 
     this.runEspecific = function (wT){
         this.n_scripts = wT;
-        log.add('Render Mode: ' + check_browser_detection);
+        var molmo = check_browser_detection;
+        log.add('Render Mode: ' + molmo);
     };
 }
 
 check_browser_detection = function() {
-    var _renderMode = (document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks');
+    var _renderMode = eval(document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks');
     return _renderMode;
 };
 
