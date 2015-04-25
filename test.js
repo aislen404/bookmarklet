@@ -12,6 +12,7 @@ function TestFactory() {
         return __testPlan.get();
     }
 }
+
 /* fullTest(plan) interface */
 function FullTest() {
     this.AllScripts = null;
@@ -50,6 +51,8 @@ function TestPlan() {
 
     this.runEspecific = function (wT){
         this.n_scripts = wT;
+        log.add('You are in ' + (document.compatMode==='CSS1Compat'?'Standards':'Quirks') + ' mode.');
+
     };
 
     this.feedback = function() {
@@ -69,11 +72,18 @@ var log = (function () {
 /* main program */
 function run() {
     var testFactory = new TestFactory();
+    var testPlans = [
+        'check_browser_detection',
+        'check_compatlist',
+        'check_compressedcontent',
+        'check_doctype',
+        'check_libs',
+        'check_pluginfree',
+        'check_w3c_validator'
+    ];
 
     var all = new FullTest();
-    var specific = new SpecificTest('check_browser_detection');
-
-
+    var specific = new SpecificTest(testPlans[0]);
 
     var test_4_all = testFactory.construct(all);
     var test_4_specific = testFactory.construct(specific);
