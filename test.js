@@ -1,26 +1,85 @@
-/*
-* test es un objeto (var) y no un constructor (function) por que solo
-* queremos manejar un solo objeto de tipo test
-*
-*/
+function Shop() {
+    this.construct = function(builder) {
+        builder.step1();
+        builder.step2();
+        return builder.get();
+    }
+}
 
+function CarBuilder() {
+    this.car = null;
 
-test = function(){
-    this.testScript = {
-        0:'check-browser-detection.js',
-        1:'check-compatlist.js',
-        2:'check-compressedcontent.js',
-        3:'check-doctype.js',
-        4:'check-libs.js',
-        5:'check-pluginfree.js',
-        6:'check-w3c-validator.js'
+    this.step1 = function() {
+        this.car = new Car();
     };
 
-    createTest = function (){
-        alert (this.testScript[0]);
+    this.step2 = function() {
+        this.car.addParts();
     };
 
-    return this;
-};
+    this.get = function() {
+        return this.car;
+    };
+}
 
+function TruckBuilder() {
+    this.truck = null;
 
+    this.step1 = function() {
+        this.truck = new Truck();
+    };
+
+    this.step2 = function() {
+        this.truck.addParts();
+    };
+
+    this.get = function() {
+        return this.truck;
+    };
+}
+
+function Car() {
+    this.doors = 0;
+
+    this.addParts = function() {
+        this.doors = 4;
+    };
+
+    this.say = function() {
+        log.add("I am a " + this.doors + "-door car");
+    };
+}
+
+function Truck() {
+    this.doors = 0;
+
+    this.addParts = function() {
+        this.doors = 2;
+    };
+
+    this.say = function() {
+        log.add("I am a " + this.doors + "-door truck");
+    };
+}
+
+// log helper
+var log = (function () {
+    var log = "";
+    return {
+        add: function (msg) { log += msg + "\n"; },
+        show: function () { alert(log); log = ""; }
+    }
+})();
+
+function run() {
+    var shop = new Shop();
+    var carBuilder = new CarBuilder();
+    var truckBuilder = new TruckBuilder();
+    var car = shop.construct(carBuilder);
+    var truck = shop.construct(truckBuilder);
+
+    car.say();
+    truck.say();
+
+    log.show();
+}

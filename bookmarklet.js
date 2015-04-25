@@ -2,8 +2,8 @@
  * Created by Aislen404 on 25/4/15.
  */
 function bookmarklet() {
-    function callback(x) {
-        test.createTest();
+    function callback() {
+        run();
     }
 
     var s = document.createElement("script");
