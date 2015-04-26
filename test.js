@@ -303,7 +303,7 @@ var check = function () {
     }
 
 
-    return result.data.mode.toString();
+    return result.testName;
 };
 
 /* feedback helper */
