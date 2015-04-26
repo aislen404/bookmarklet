@@ -2,28 +2,29 @@
 // IE6 will always quirk out on an XML header but let's assume everyone is past that.
 // SEE http://msdn.microsoft.com/en-us/library/ie/ms535242(v=vs.85).aspx
 
-var spaces = '[\\s\\r\\n]*',
-    comment = '(?:' + spaces + '<!--(?:.|[\\r\\n])*-->)*',
-    xmltag = '(?:<\\?xml(?:.|[\\r\\n])*\\?>)?',
-    doctype = '<!doctype (\\w+)' + spaces + '([^>]*)>',
-// _, doctype-innards
-    headRE = new RegExp('^' + comment + spaces + xmltag + spaces + doctype),
-// _, public|system, "public identifier", "system identifier"?
-    pubsysRE = new RegExp('^(public|system)' + spaces + '"([^"]*)"' + spaces + '("[^"]*")?'),
-// _, (x)html, version, variant (e.g., "transitional")
-    pubidRE = new RegExp('-//w3c//dtd (x?html)\\S*\\s*([\\d\\.]+)?\\s*(\\w+)?//en'),
-// Literal pubids that pass standards
-    pubidMap = {
-        "iso/iec 15445:1999//dtd hypertext markup language//en": true,
-        "iso/iec 15445:1999//dtd html//en": true,
-        "-//ietf//dtd html i18n//en": true,
-        "-//unknown//en": true
-    };
 
 var check = function () {
 
+    var spaces = '[\\s\\r\\n]*',
+        comment = '(?:' + spaces + '<!--(?:.|[\\r\\n])*-->)*',
+        xmltag = '(?:<\\?xml(?:.|[\\r\\n])*\\?>)?',
+        doctype = '<!doctype (\\w+)' + spaces + '([^>]*)>',
+// _, doctype-innards
+        headRE = new RegExp('^' + comment + spaces + xmltag + spaces + doctype),
+// _, public|system, "public identifier", "system identifier"?
+        pubsysRE = new RegExp('^(public|system)' + spaces + '"([^"]*)"' + spaces + '("[^"]*")?'),
+// _, (x)html, version, variant (e.g., "transitional")
+        pubidRE = new RegExp('-//w3c//dtd (x?html)\\S*\\s*([\\d\\.]+)?\\s*(\\w+)?//en'),
+// Literal pubids that pass standards
+        pubidMap = {
+            "iso/iec 15445:1999//dtd hypertext markup language//en": true,
+            "iso/iec 15445:1999//dtd html//en": true,
+            "-//ietf//dtd html i18n//en": true,
+            "-//unknown//en": true
+        };
+
     //TODO: revisa esta linea antes de publicar.
-    var website = window;
+    var website = document;
 
 
     // Don't waste time looking through the whole doc; the doctype should be early
