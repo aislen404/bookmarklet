@@ -229,11 +229,11 @@ var check = function () {
         };
 
     //TODO: revisa esta linea antes de publicar.
-    var website = document;
-
+    var website = document.documentElement;
+    website.toString();
 
     // Don't waste time looking through the whole doc; the doctype should be early
-    var head = website.content.slice(0, 2000).trim().toLowerCase(),
+    var head = website.slice(0, 2000).trim().toLowerCase(),
         dt = headRE.exec(head),
         result = {
             testName: "doctype",
