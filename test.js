@@ -6,7 +6,6 @@
  */
 
 
-
 var renderMode_Detection = function() {
     var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
     return 'Render Mode: '+_renderMode;
@@ -23,7 +22,6 @@ var doctype_Detection = function(){
         + '>';
     return 'DocType: ' + _html;
 };
-
 
 var layoutEngine_Detection = function() {
     var html = document.documentElement,
@@ -148,8 +146,60 @@ var layoutEngine_Detection = function() {
 
     html.className += cssClass;
 
-    return 'Ni puta de que devuelve: '+jsObject;
+    return 'Browser: '+jsObject.vendor+' Version: '+jsObject.version;
 };
+
+var ieUserAgent_Detection = function (){
+
+    // Get the user agent string
+    var ua = navigator.userAgent;
+
+    this.compatibilityMode = false;
+
+    // Detect whether or not the browser is IE
+    var ieRegex = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (ieRegex.exec(ua) == null)
+        this.exception = "The user agent detected does not contai Internet Explorer.";
+
+    // Get the current "emulated" version of IE
+    this.renderVersion = parseFloat(RegExp.$1);
+    this.version = this.renderVersion;
+
+    // Check the browser version with the rest of the agent string to detect compatibility mode
+    if (ua.indexOf("Trident/6.0") > -1) {
+        if (ua.indexOf("MSIE 7.0") > -1) {
+            this.compatibilityMode = true;
+            this.version = 10;                  // IE 10
+        }
+    }
+    else if (ua.indexOf("Trident/5.0") > -1) {
+        if (ua.indexOf("MSIE 7.0") > -1) {
+            this.compatibilityMode = true;
+            this.version = 9;                   // IE 9
+        }
+    }
+    else if (ua.indexOf("Trident/4.0") > -1) {
+        if (ua.indexOf("MSIE 7.0") > -1) {
+            this.compatibilityMode = true;
+            this.version = 8;                   // IE 8
+        }
+    }
+    else if (ua.indexOf("MSIE 7.0") > -1){
+        this.version = 7;                       // IE 7
+    }else{
+        this.version = 6;                       // IE 6
+    }
+
+    var val = "IE" + ieUserAgent.version;
+    if (ieUserAgent.compatibilityMode)
+        val += " Compatibility Mode (IE" + ieUserAgent.renderVersion + " emulation)";
+        return "We have detected the following IE browser: " + val;
+};
+
+var xUA_compatible_Detection = function () {
+    return 'x-ua-compatible: ' + document.getElementsByTagName('meta')[0];
+};
+
 
 /* feedback helper */
 var log = (function () {
@@ -176,6 +226,8 @@ function run() {
     log.add(renderMode_Detection());
     log.add(doctype_Detection());
     log.add(layoutEngine_Detection());
+    log.add(xUA_compatible_Detection());
+    log.add(ieUserAgent_Detection());
 
 
     log.show();
