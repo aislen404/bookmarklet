@@ -195,7 +195,7 @@ var ieUserAgent_Detection = function (){
         val += " Compatibility Mode (IE" + this.renderVersion + " emulation)";
         return "We have detected the following IE browser: " + val;
 };
-
+ 
 var xUA_compatible_Detection = function () {
 
     var x = document.getElementsByTagName("META");
