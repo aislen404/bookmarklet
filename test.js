@@ -190,7 +190,7 @@ var ieUserAgent_Detection = function (){
         this.version = 6;                       // IE 6
     }
 
-    var val = "IE" + ieUserAgent.version;
+    var val = "IE" + this.version;
     if (this.compatibilityMode)
         val += " Compatibility Mode (IE" + this.renderVersion + " emulation)";
         return "We have detected the following IE browser: " + val;
