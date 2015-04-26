@@ -9,7 +9,8 @@
 
 check_browser_detection = function() {
     var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
-    log.add(_renderMode);
+    return 'Render Mode: '+_renderMode;
+
 };
 
 /* feedback helper */
@@ -33,6 +34,9 @@ function run() {
         'check_pluginfree',
         'check_w3c_validator'
     ];
-    check_browser_detection();
+    log.add(check_browser_detection());
+
+
+
     log.show();
 }
