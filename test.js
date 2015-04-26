@@ -12,17 +12,6 @@ var renderMode_Detection = function() {
 
 };
 
-var doctype_Detection = function(){
-    var _node = document.doctype;
-    var _html = "<!DOCTYPE "
-        + _node.name
-        + (_node.publicId ? ' PUBLIC "' + _node.publicId + '"' : '')
-        + (!_node.publicId && _node.systemId ? ' SYSTEM' : '')
-        + (_node.systemId ? ' "' + _node.systemId + '"' : '')
-        + '>';
-    return 'DocType: ' + _html;
-};
-
 var layoutEngine_Detection = function() {
     var html = document.documentElement,
         style = html.style,
@@ -208,7 +197,7 @@ var xUA_compatible_Detection = function () {
    return txt;
 };
 
-var check = function () {
+var doctype_Detection = function () {
 
     var spaces = '[\\s\\r\\n]*',
         comment = '(?:' + spaces + '<!--(?:.|[\\r\\n])*-->)*',
@@ -303,7 +292,7 @@ var check = function () {
     }
 
 
-    return result.data.mode+' pollardas';
+    return 'DOCTYPE: ' + result.data.mode + '\n' + 'Test Result: ' result.passed;
 };
 
 /* feedback helper */
@@ -329,11 +318,10 @@ function run() {
     ];
 
     //log.add(renderMode_Detection());
-    //log.add(doctype_Detection());
+    log.add(doctype_Detection());
     //log.add(layoutEngine_Detection());
     //log.add(xUA_compatible_Detection());
     //log.add(ieUserAgent_Detection());
-    log.add(check());
 
 
     log.show();
