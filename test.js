@@ -191,13 +191,21 @@ var ieUserAgent_Detection = function (){
     }
 
     var val = "IE" + ieUserAgent.version;
-    if (ieUserAgent.compatibilityMode)
-        val += " Compatibility Mode (IE" + ieUserAgent.renderVersion + " emulation)";
+    if (this.compatibilityMode)
+        val += " Compatibility Mode (IE" + this.renderVersion + " emulation)";
         return "We have detected the following IE browser: " + val;
 };
 
 var xUA_compatible_Detection = function () {
-    return 'x-ua-compatible: ' + document.getElementsByTagName('meta')[0];
+
+    var x = document.getElementsByTagName("META");
+    var txt = "";
+    var i;
+    for (i = 0; i < x.length; i++) {
+        txt = txt + 'http-equiv: '+ x[i].httpEquiv + 'content: ' + x[i].content + '\n';
+    }
+
+   return txt;
 };
 
 
@@ -227,7 +235,7 @@ function run() {
     log.add(doctype_Detection());
     log.add(layoutEngine_Detection());
     log.add(xUA_compatible_Detection());
-    //log.add(ieUserAgent_Detection());
+    log.add(ieUserAgent_Detection());
 
 
     log.show();
