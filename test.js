@@ -229,8 +229,8 @@ var check = function () {
         };
 
     //TODO: revisa esta linea antes de publicar.
-    var website = document.documentElement;
-    website.toString();
+    var ns = new XMLSerializer();
+    var website= ns.serializeToString(document);
 
     // Don't waste time looking through the whole doc; the doctype should be early
     var head = website.slice(0, 2000).trim().toLowerCase(),
