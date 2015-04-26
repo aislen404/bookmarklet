@@ -5,60 +5,11 @@
  * allows you to check the page that you are just visiting
  */
 
-/*constructs test plans by using the fullTest(plan) o SpecificTest(plan) interface*/
-function TestFactory() {
-    this.construct = function(testPlan) {
-        testPlan.execute();
-        return testPlan.get();
-    }
-}
 
-/* fullTest(plan) interface */
-function FullTest() {
-    this.AllScripts = null;
-
-    this.execute = function() {
-        this.AllScripts = new TestSets();
-        this.AllScripts.runAll();
-    };
-
-    this.get = function() {
-        return this.AllScripts;
-    };
-}
-
-/* Specific(plan) interface */
-function SpecificTest(whatTest){
-    this.ThatScript = null;
-
-    this.execute = function() {
-        this.ThatScript = new TestSets();
-        this.ThatScript.runEspecific(whatTest);
-    };
-
-    this.get = function() {
-        return this.ThatScript;
-    };
-}
-
-/* controls the execution and feedback of the script test to being tested */
-function TestSets() {
-    this.n_scripts = 0;
-
-    this.runAll = function() {
-        this.n_scripts = 'all';
-    };
-
-    this.runEspecific = function (wT){
-        this.n_scripts = wT;
-        var molmo = check_browser_detection;
-        log.add('Render Mode: ' + molmo);
-    };
-}
 
 check_browser_detection = function() {
-    var _renderMode = eval(document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks');
-    return _renderMode;
+    var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
+    log.add(_renderMode);
 };
 
 /* feedback helper */
@@ -72,8 +23,8 @@ var log = (function () {
 
 /* main program */
 function run() {
-    var testFactory = new TestFactory();
-    var testPlans = [
+
+    var testSuite = [
         'check_browser_detection',
         'check_compatlist',
         'check_compressedcontent',
@@ -82,14 +33,6 @@ function run() {
         'check_pluginfree',
         'check_w3c_validator'
     ];
-
-    //var all = new FullTest();
-    var specific = new SpecificTest(testPlans[0]);
-
-    //var test_4_all = testFactory.construct(all);
-    var test_4_specific = testFactory.construct(specific);
-
-    //test_4_all.feedback();
-    //test_4_specific.feedback();
+    check_browser_detection();
     log.show();
 }
