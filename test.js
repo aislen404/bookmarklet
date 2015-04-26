@@ -7,10 +7,21 @@
 
 
 
-check_browser_detection = function() {
+var renderMode_Detection = function() {
     var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
     return 'Render Mode: '+_renderMode;
 
+};
+
+var doctype_Detection = function(){
+    var _node = document.doctype;
+    var _html = "<!DOCTYPE "
+        + _node.name
+        + (_node.publicId ? ' PUBLIC "' + _node.publicId + '"' : '')
+        + (!_node.publicId && _node.systemId ? ' SYSTEM' : '')
+        + (_node.systemId ? ' "' + _node.systemId + '"' : '')
+        + '>';
+    return 'DocType: ' + _html;
 };
 
 /* feedback helper */
@@ -34,8 +45,9 @@ function run() {
         'check_pluginfree',
         'check_w3c_validator'
     ];
-    log.add(check_browser_detection());
-
+    
+    log.add(renderMode_Detection());
+    log.add(doctype_Detection());
 
 
     log.show();
