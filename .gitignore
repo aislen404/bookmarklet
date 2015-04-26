@@ -1,6 +1,6 @@
 # Project Files #
 #################
-*.idea
+.idea/
 
 # OS generated files #
 ######################
