@@ -303,7 +303,7 @@ var check = function () {
     }
 
 
-    return result.testName;
+    return result.data.mode+' pollardas';
 };
 
 /* feedback helper */
