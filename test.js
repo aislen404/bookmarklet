@@ -192,10 +192,9 @@ var xUA_compatible_Detection = function () {
     var i;
     for (i = 0; i < x.length; i++) {
 
-        if( x[i].httpEquiv == 'X-UA-Compatible'){
+        if( x[i].httpEquiv.toString() == 'X-UA-Compatible'){
             txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content + '\n';
-        }else{
-            txt = 'No hay cabecera X-UA-Compatible';
+    
         }
     }
 
@@ -297,7 +296,7 @@ var doctype_Detection = function () {
     }
 
 
-    return 'DOCTYPE: ' + result.data.mode + '\n' + 'Test Result: '+ result.passed;
+    return 'DOCTYPE: ' + result.data.mode ;
 };
 
 /* feedback helper */
