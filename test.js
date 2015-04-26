@@ -227,7 +227,7 @@ function run() {
     log.add(doctype_Detection());
     log.add(layoutEngine_Detection());
     log.add(xUA_compatible_Detection());
-    log.add(ieUserAgent_Detection());
+    //log.add(ieUserAgent_Detection());
 
 
     log.show();
