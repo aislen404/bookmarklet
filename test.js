@@ -191,7 +191,12 @@ var xUA_compatible_Detection = function () {
     var txt = "";
     var i;
     for (i = 0; i < x.length; i++) {
-        txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content + '\n';
+
+        if( x[i].httpEquiv == 'X-UA-Compatible'){
+            txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content + '\n';
+        }else{
+            txt = 'No hay cabecera X-UA-Compatible';
+        }
     }
 
    return txt;
@@ -292,7 +297,7 @@ var doctype_Detection = function () {
     }
 
 
-    return 'DOCTYPE: ' + result.data.mode + '\n' + 'Test Result: ' result.passed;
+    return 'DOCTYPE: ' + result.data.mode + '\n' + 'Test Result: '+ result.passed;
 };
 
 /* feedback helper */
@@ -317,11 +322,11 @@ function run() {
         'check_w3c_validator'
     ];
 
-    //log.add(renderMode_Detection());
+    log.add(renderMode_Detection());
     log.add(doctype_Detection());
-    //log.add(layoutEngine_Detection());
-    //log.add(xUA_compatible_Detection());
-    //log.add(ieUserAgent_Detection());
+    log.add(layoutEngine_Detection());
+    log.add(xUA_compatible_Detection());
+    log.add(ieUserAgent_Detection());
 
 
     log.show();
