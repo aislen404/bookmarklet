@@ -202,7 +202,7 @@ var xUA_compatible_Detection = function () {
     var txt = "";
     var i;
     for (i = 0; i < x.length; i++) {
-        txt = txt + 'http-equiv: '+ x[i].httpEquiv + 'content: ' + x[i].content + '\n';
+        txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content + '\n';
     }
 
    return txt;
