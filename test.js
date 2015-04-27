@@ -12,6 +12,24 @@ var renderMode_Detection = function() {
 
 };
 
+
+/*!
+ * Layout Engine v0.8.3
+ *
+ * Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
+ *
+ * Possible vendors: '.vendor-' + 'ie', 'khtml', 'mozilla', 'opera', 'webkit'
+ * '.vendor-ie' also adds the version: 'vendor-' + 'ie-11', 'ie-10', 'ie-9', 'ie-8', 'ie-7'
+ * '.vendor-opera-mini' is also detected
+ *
+ * Possible browsers: '.browser-' + 'android', 'chrome', 'wiiu'
+ *
+ * Copyright (c) 2014 Matt Stow
+ *
+ * http://mattstow.com
+ *
+ * Licensed under the MIT license
+ */
 var layoutEngine_Detection = function() {
     var html = document.documentElement,
         style = html.style,
