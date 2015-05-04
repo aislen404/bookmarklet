@@ -375,7 +375,7 @@ function pintoYo (){
         '</div>' +
         '<a href="#"  id="close_btn" class="modal-close" title="Close this modal">?</a>' +
         '</section>';
-    _body.appendChild(_div);
+    _body[0].appendChild(_div);
 }
 
 function overlay() {
