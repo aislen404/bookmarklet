@@ -355,14 +355,21 @@ function execute_test_suite(){
 
     boton.onclick = toggle_visibility();
 }
-
 function loadCSS(){
-    var headID = document.getElementsByTagName('head')[0];
-    var cssNode = document.createElement('link');
-    cssNode.type = 'text/css';
-    cssNode.rel = 'stylesheet';
-    cssNode.href = 'https://raw.githubusercontent.com/aislen404/bookmarklet/master/modal.css';
-    headID.appendChild(cssNode);
+
+    var css =  '.modalDialog{position:fixed;font-family:Arial,Helvetica,sans-serif;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.8);z-index:99999;visibility:visible}.modalDialog>div{width:400px;position:relative;margin:10% auto;padding:5px 20px 13px;border-radius:10px;background:#fff;background:-moz-linear-gradient(#fff,#999);background:-webkit-linear-gradient(#fff,#999);background:-o-linear-gradient(#fff,#999)}.close{background:#606061;color:#FFF;line-height:25px;position:absolute;right:-12px;text-align:center;top:-10px;width:24px;text-decoration:none;font-weight:700;-webkit-border-radius:12px;-moz-border-radius:12px;border-radius:12px;-moz-box-shadow:1px 1px 3px #000;-webkit-box-shadow:1px 1px 3px #000;box-shadow:1px 1px 3px #000}.close:hover{background:#00d9ff}';
+    head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+
+    style.type = 'text/css';
+    if (style.styleSheet){
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+
 }
 
 function drawResults (){
@@ -376,6 +383,8 @@ function drawResults (){
         '</div>' ;
         _body[0].appendChild(_div);
 }
+
+
 
 function toggle_visibility() {
     el = document.getElementById("openModal");
