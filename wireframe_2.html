@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>Bookmarklet</title>
+    <link href="modal.css" rel="stylesheet">
+    <script src="modal.js"></script>
+    <script src="test_2.js"></script>
+</head>
+
+<body>
+<a href="#modal">Modal</a>
+<section class="modal--show" id="modal" tabindex="-1"
+         role="dialog" aria-labelledby="modal-label" aria-hidden="false">
+
+    <div class="modal-inner">
+        <header id="modal-label">
+            <h1>
+                Resultado del Test:
+            </h1>
+        </header>
+        <div class="modal-content">
+            <ul id="testResults">
+
+            </ul>
+        </div>
+        <footer>
+            <span>Codificado con Amor por @aislen404</span>
+        </footer>
+    </div>
+
+    <a href=""  id="close_btn" class="modal-close" title="Close this modal" data-close="Close"
+       data-dismiss="modal">?</a>
+</section>
+
+<script>
+
+    var resultado = run();
+
+    for (var item in resultado) {
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode(resultado[item]);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("testResults").appendChild(node);     // Append <li> to <ul> with id="myList"
+        console.log(resultado[item]);
+    }
+
+
+    var boton = document.getElementById('close_btn');
+
+    boton.onclick = apagar;
+
+    function apagar (){
+
+        var cuerpo = document.getElementsByTagName('body');
+        var ventana_modal = document.getElementById('modal');
+
+        cuerpo[0].removeChild(ventana_modal);
+
+        /*
+        var className = 'is-active';
+        var els = Array.prototype.slice.call(
+                document.getElementsByClassName(className)
+        );
+        for (var i= 0, l=els.length; i<l;i++){
+            var el = els[i];
+            el.className = el.className.replace(
+                new RegExp  ('(^|\\s+)' + className + '(\\s+|$)','g'),'$1'
+            );
+        }
+        */
+    }
+</script>
+
+</body>
+</html>
