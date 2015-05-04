@@ -375,7 +375,7 @@ function loadCSS(){
 function drawResults (){
     var _body = document.getElementsByTagName('body');
     var _div = document.createElement("div");
-    _div.innerHTML = '<div id="openModal" class="modalDialog">' +
+    _div.innerHTML = '<div id="openModal" class="modalDialog" style="visibility: visible">' +
         '<div>	<a id="close_btn" href="#" title="Close" class="close">X</a>' +
         '<ul id="testResults">' +
         '</ul>' +
