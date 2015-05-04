@@ -3,52 +3,62 @@
     <title>Bookmarklet 3</title>
     <script src="test_2.js"></script>
     <style>
-        #overlay {
-            visibility: hidden;
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+            visibility: visible;
+        }
+
+        .modalDialog > div {
+            width: 400px;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: #fff;
+            background: -moz-linear-gradient(#fff, #999);
+            background: -webkit-linear-gradient(#fff, #999);
+            background: -o-linear-gradient(#fff, #999);
+        }
+        .close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
             position: absolute;
-            left: 0px;
-            top: 0px;
-            width:100%;
-            height:100%;
-            text-align:center;
-            z-index: 1000;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
         }
-        #overlay div {
-            width:300px;
-            margin: 100px auto;
-            background-color: #fff;
-            border:1px solid #000;
-            padding:15px;
-            text-align:center;
-        }
-        #overlay .close{
-            clip: rect(0px, 0px, 0px, 0px);
-            color: rgb(85, 26, 139);
-            display: block;
-            font-family: 'MS Sans Serif', sans-serif, Verdana, Arial;
-            height: 1px;
-            line-height: 20px;
-            margin-bottom: -1px;
-            margin-left: -1px;
-            margin-right: -1px;
-            margin-top: -1px;
-            overflow-x: hidden;
-            overflow-y: hidden;
-            text-indent: -100px;
+        .close:hover {
+            background: #00d9ff;
         }
     </style>
 </head>
 
 <body>
-
-<div id="overlay">
-    <div>
+<div id="openModal" class="modalDialog">
+    <div>	<a id="close_btn" href="#" title="Close" class="close">X</a>
         <ul id="testResults">
 
         </ul>
     </div>
-    <a href="#" id="close_btn" class="close" title="Close this modal">?</a>
 </div>
+
 
 <script>
 
@@ -62,8 +72,11 @@
         console.log(resultado[item]);
     }
 
+    var boton = document.getElementById('close_btn');
+    boton.onclick = overlay;
+
     function overlay() {
-        el = document.getElementById("overlay");
+        el = document.getElementById("openModal");
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     }
 
