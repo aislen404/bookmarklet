@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <title>Bookmarklet</title>
+    <title>Bookmarklet 2</title>
     <link href="modal.css" rel="stylesheet">
-    <script src="modal.js"></script>
     <script src="test_2.js"></script>
 </head>
 
 <body>
-<a href="#modal">Modal</a>
-<section class="modal--show" id="modal" tabindex="-1"
-         role="dialog" aria-labelledby="modal-label" aria-hidden="false">
+
+<section class="modal--show is-active" id="modal" style="visibility: visible">
 
     <div class="modal-inner">
         <header id="modal-label">
@@ -27,8 +25,7 @@
         </footer>
     </div>
 
-    <a href=""  id="close_btn" class="modal-close" title="Close this modal" data-close="Close"
-       data-dismiss="modal">?</a>
+    <a href="#"  id="close_btn" class="modal-close" title="Close this modal">?</a>
 </section>
 
 <script>
@@ -46,27 +43,11 @@
 
     var boton = document.getElementById('close_btn');
 
-    boton.onclick = apagar;
+    boton.onclick = overlay;
 
-    function apagar (){
-
-        var cuerpo = document.getElementsByTagName('body');
-        var ventana_modal = document.getElementById('modal');
-
-        cuerpo[0].removeChild(ventana_modal);
-
-        /*
-        var className = 'is-active';
-        var els = Array.prototype.slice.call(
-                document.getElementsByClassName(className)
-        );
-        for (var i= 0, l=els.length; i<l;i++){
-            var el = els[i];
-            el.className = el.className.replace(
-                new RegExp  ('(^|\\s+)' + className + '(\\s+|$)','g'),'$1'
-            );
-        }
-        */
+    function overlay() {
+        el = document.getElementById("modal");
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     }
 </script>
 

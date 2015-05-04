@@ -11,23 +11,6 @@ var renderMode_Detection = function() {
 
 };
 
-/*!
- * Layout Engine v0.8.3
- *
- * Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
- *
- * Possible vendors: '.vendor-' + 'ie', 'khtml', 'mozilla', 'opera', 'webkit'
- * '.vendor-ie' also adds the version: 'vendor-' + 'ie-11', 'ie-10', 'ie-9', 'ie-8', 'ie-7'
- * '.vendor-opera-mini' is also detected
- *
- * Possible browsers: '.browser-' + 'android', 'chrome', 'wiiu'
- *
- * Copyright (c) 2014 Matt Stow
- *
- * http://mattstow.com
- *
- * Licensed under the MIT license
- */
 var layoutEngine_Detection = function() {
     var html = document.documentElement,
         style = html.style,
@@ -320,7 +303,6 @@ var doctype_Detection = function () {
     return 'DOCTYPE: ' + result.data.mode ;
 };
 
-/* feedback helper */
 var log = (function () {
     var log = [];
     return {
@@ -330,7 +312,7 @@ var log = (function () {
 })();
 
 /* main program */
-function run() {
+var  run = function () {
 
     var testSuite = [
         'check_browser_detection',
@@ -350,4 +332,53 @@ function run() {
 
 
     return log.show();
+};
+
+/* lanzador */
+function execute_test_suite(){
+
+    var resultado = run();
+
+    pintoYo();
+
+    for (var item in resultado) {
+        var node = document.createElement("li");                 // Create a <li> node
+        var textnode = document.createTextNode(resultado[item]);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("testResults").appendChild(node);     // Append <li> to <ul> with id="myList"
+        console.log(resultado[item]);
+    }
+
+
+    var boton = document.getElementById('close_btn');
+
+    boton.onclick = overlay;
+}
+
+function pintoYo (){
+    var _body = document.getElementsByTagName('body');
+    var _div = document.createElement("div");
+    _div.innerHTML = '<section class="modal--show is-active" id="modal" style="visibility: visible">' +
+        '<div class="modal-inner">' +
+        '<header id="modal-label">' +
+        '<h1>' +
+        'Resultado del Test:' +
+        '</h1>' +
+        '</header>' +
+        '<div class="modal-content">' +
+        '<ul id="testResults">' +
+        ' </ul>' +
+        '</div>' +
+        '<footer>' +
+        '<span>Codificado con Amor por @aislen404</span>' +
+        '</footer>' +
+        '</div>' +
+        '<a href="#"  id="close_btn" class="modal-close" title="Close this modal">?</a>' +
+        '</section>';
+    _body.appendChild(_div);
+}
+
+function overlay() {
+    el = document.getElementById("modal");
+    el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }

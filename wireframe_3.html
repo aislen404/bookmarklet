@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>Bookmarklet 3</title>
+    <script src="test_2.js"></script>
+    <style>
+        #overlay {
+            visibility: hidden;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1000;
+        }
+        #overlay div {
+            width:300px;
+            margin: 100px auto;
+            background-color: #fff;
+            border:1px solid #000;
+            padding:15px;
+            text-align:center;
+        }
+        #overlay .close{
+            clip: rect(0px, 0px, 0px, 0px);
+            color: rgb(85, 26, 139);
+            display: block;
+            font-family: 'MS Sans Serif', sans-serif, Verdana, Arial;
+            height: 1px;
+            line-height: 20px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            text-indent: -100px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="overlay">
+    <div>
+        <ul id="testResults">
+
+        </ul>
+    </div>
+    <a href="#" id="close_btn" class="close" title="Close this modal">?</a>
+</div>
+
+<script>
+
+    var resultado = run();
+
+    for (var item in resultado) {
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode(resultado[item]);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("testResults").appendChild(node);     // Append <li> to <ul> with id="myList"
+        console.log(resultado[item]);
+    }
+
+    function overlay() {
+        el = document.getElementById("overlay");
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+    }
+
+    overlay();
+</script>
+
+</body>
+</html>
