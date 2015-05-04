@@ -16,4 +16,3 @@ function bookmarklet() {
     }
     document.body.appendChild(s);
 }
-
