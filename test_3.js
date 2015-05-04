@@ -350,10 +350,6 @@ function execute_test_suite(){
         document.getElementById("testResults").appendChild(node);     // Append <li> to <ul> with id="myList"
         console.log(resultado[item]);
     }
-
-    var boton = document.getElementById('close_btn');
-
-    boton.onclick = toggle_visibility();
 }
 
 function loadCSS(){
@@ -383,6 +379,9 @@ function drawResults (){
         '</div>' +
         '</div>' ;
         _body[0].appendChild(_div);
+
+    var boton = document.getElementById('close_btn');
+    boton.onclick = toggle_visibility();
 }
 
 function toggle_visibility() {
