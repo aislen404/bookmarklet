@@ -6,19 +6,20 @@ function bookmarklet() {
         execute_test_suite();
     }
 
-    var s = document.createElement("script");
-    s.src = "https://raw.githubusercontent.com/aislen404/bookmarklet/master/test_2.js";
+    var headID = document.getElementsByTagName('head')[0];
+    var cssNode = document.createElement('link');
 
-    var l = document.createElement("link");
-    l.href="https://raw.githubusercontent.com/aislen404/bookmarklet/master/modal.css";
+    cssNode.type = 'text/css';
+    cssNode.rel = 'stylesheet';
+    cssNode.href = 'https://raw.githubusercontent.com/aislen404/bookmarklet/master/modal.css';
+    cssNode.media = 'screen';
+    headID.appendChild(cssNode);
 
+    var jsNode = document.createElement('script');
+    jsNode.type = 'text/javascript';
+    jsNode.onload=callback();
+    jsNode.src = 'https://raw.githubusercontent.com/aislen404/bookmarklet/master/test_2.js';
+    headID.appendChild(jsNode);
 
-    if (s.addEventListener) {
-        s.addEventListener("load", callback, false)
-    } else if (s.readyState) {
-        s.onreadystatechange = callback(s);
-    }
-    document.body.appendChild(s);
-    document.body.appendChild(l);
 }
 
