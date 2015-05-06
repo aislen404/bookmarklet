@@ -200,8 +200,9 @@ var xUA_compatible_Detection = function () {
         }
     }
 
-    if (txt='')
+    if (txt==''){
         txt = txt + 'No X-UA-Compatible defined !!!';
+    }
 
    return txt;
 };
