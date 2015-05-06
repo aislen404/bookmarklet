@@ -211,7 +211,7 @@ var doctype_Detection = function () {
 
     var response;
 
-    if (document.all[0].nodeValue == null){
+    if (document.all[0].nodeValue != null){
         var re=/\s+(X?HTML)\s+([\d\.]+)\s*([^\/]+)*\//gi;
         var myversionInfo = {
             xhtml : "",
