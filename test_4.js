@@ -207,15 +207,7 @@ var xUA_compatible_Detection = function () {
 
 var doctype_Detection = function () {
 
-    var response;
-
-    if (typeof (document.doctype.name)){
-        response = detectNEWDoctype;
-    }else{
-        response = detectOLDDoctype;
-    }
-
-    function detectOLDDoctype (){
+    if (document.all[0].nodeValue == null){
         var re=/\s+(X?HTML)\s+([\d\.]+)\s*([^\/]+)*\//gi;
         var myversionInfo = {
             xhtml : "",
@@ -229,21 +221,15 @@ var doctype_Detection = function () {
         myversionInfo.version=RegExp.$2;
         myversionInfo.importance=RegExp.$3;
         return 'DOCTYPE: ' + myversionInfo.xhtml+' '+myversionInfo.version+' '+myversionInfo.importance ;
-    }
-
-    function detectNEWDoctype () {
+    }else{
 
         var spaces = '[\\s\\r\\n]*',
             comment = '(?:' + spaces + '<!--(?:.|[\\r\\n])*-->)*',
             xmltag = '(?:<\\?xml(?:.|[\\r\\n])*\\?>)?',
             doctype = '<!doctype (\\w+)' + spaces + '([^>]*)>',
-// _, doctype-innards
             headRE = new RegExp('^' + comment + spaces + xmltag + spaces + doctype),
-// _, public|system, "public identifier", "system identifier"?
             pubsysRE = new RegExp('^(public|system)' + spaces + '"([^"]*)"' + spaces + '("[^"]*")?'),
-// _, (x)html, version, variant (e.g., "transitional")
             pubidRE = new RegExp('-//w3c//dtd (x?html)\\S*\\s*([\\d\\.]+)?\\s*(\\w+)?//en'),
-// Literal pubids that pass standards
             pubidMap = {
                 "iso/iec 15445:1999//dtd hypertext markup language//en": true,
                 "iso/iec 15445:1999//dtd html//en": true,
@@ -251,11 +237,9 @@ var doctype_Detection = function () {
                 "-//unknown//en": true
             };
 
-        //TODO: revisa esta linea antes de publicar.
         var ns = new XMLSerializer();
         var website= ns.serializeToString(document);
 
-        // Don't waste time looking through the whole doc; the doctype should be early
         var head = website.slice(0, 2000).trim().toLowerCase(),
             dt = headRE.exec(head),
             result = {
@@ -323,13 +307,11 @@ var doctype_Detection = function () {
                     result.data.mode = [(htmltype + " " + version + " " + variant).trim()];
                 }
             }
-        };
-
-
+        }
         return 'DOCTYPE: ' + result.data.mode ;
     }
 
-    return response ;
+
 };
 
 var log = (function () {
