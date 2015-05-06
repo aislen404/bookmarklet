@@ -189,7 +189,7 @@ var ieUserAgent_Detection = function (){
 var xUA_compatible_Detection = function () {
 
     var x = document.getElementsByTagName("META");
-    var txt = "";
+    var txt = '';
     var i;
     if (x.length == 0)
         txt = 'no META tags in page !!!';
@@ -201,7 +201,7 @@ var xUA_compatible_Detection = function () {
     }
 
     if (txt==''){
-        txt = txt + 'No X-UA-Compatible defined !!!';
+        txt = 'No X-UA-Compatible defined !!!';
     }
 
    return txt;
