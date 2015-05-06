@@ -209,7 +209,7 @@ var doctype_Detection = function () {
 
     var response;
 
-    if typeof (document.doctype.name){
+    if (typeof (document.doctype.name)){
         response = detectNEWDoctype;
     }else{
         response = detectOLDDoctype;
@@ -323,26 +323,13 @@ var doctype_Detection = function () {
                     result.data.mode = [(htmltype + " " + version + " " + variant).trim()];
                 }
             }
-        }
+        };
 
 
         return 'DOCTYPE: ' + result.data.mode ;
     }
 
     return response ;
-};
-
-var doctype_Detection_2 = function () {
-
-	var node = document.doctype;
-	var html = "<!DOCTYPE "
-			 + node.name
-			 + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '')
-			 + (!node.publicId && node.systemId ? ' SYSTEM' : '') 
-			 + (node.systemId ? ' "' + node.systemId + '"' : '')
-			 + '>';
-
-    return 'DOCTYPE: ' + html ;
 };
 
 var log = (function () {
@@ -367,7 +354,7 @@ var  run_test_suite = function () {
     ];
 
     log.add(renderMode_Detection());
-    log.add(doctype_Detection_2());
+    log.add(doctype_Detection());
     log.add(layoutEngine_Detection());
     log.add(xUA_compatible_Detection());
     log.add(ieUserAgent_Detection());
