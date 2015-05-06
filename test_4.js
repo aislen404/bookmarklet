@@ -183,9 +183,9 @@ var ieUserAgent_Detection = function (){
             val += " Entering in Compatibility Mode (IE" + this.renderVersion + " emulation)";
         return "We have detected the following IE browser: " + val;
     }
-        return val;
+    return val;
 };
- 
+
 var xUA_compatible_Detection = function () {
 
     var x = document.getElementsByTagName("META");
@@ -204,7 +204,7 @@ var xUA_compatible_Detection = function () {
     if (count == 0){
         txt = 'NO X-UA-Compatible META in document';
     }
-   return txt;
+    return txt;
 };
 
 var doctype_Detection = function () {
@@ -394,7 +394,7 @@ function drawResults (){
         '</ul>' +
         '</div>' +
         '</div>' ;
-        _body[0].appendChild(_div);
+    _body[0].appendChild(_div);
 }
 
 function toggle_visibility() {
