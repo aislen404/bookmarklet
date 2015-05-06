@@ -23,20 +23,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_4.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="test_4.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3079" max-vertical-offset="6105">
-              <caret line="218" column="0" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.8002958" vertical-offset="2534" max-vertical-offset="3525">
+              <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+              <folding>
+                <element signature="e#5710#10388#0" expanded="false" />
+                <element signature="e#10414#10544#0" expanded="false" />
+                <element signature="e#10603#11054#0" expanded="false" />
+                <element signature="n#!!block;n#execute_test_suite#0" expanded="false" />
+                <element signature="n#!!block;n#loadCSS#0" expanded="false" />
+                <element signature="n#!!block;n#drawResults#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bookmarklet_4.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="bookmarklet_4.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookmarklet_4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25821596" vertical-offset="0" max-vertical-offset="639">
+            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="285">
               <caret line="11" column="186" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="186" />
               <folding />
             </state>
@@ -93,8 +100,8 @@
         <option value="$PROJECT_DIR$/test_3.js" />
         <option value="$PROJECT_DIR$/bookmarklet_3.js" />
         <option value="$PROJECT_DIR$/oldDocTypes.js" />
-        <option value="$PROJECT_DIR$/test_4.js" />
         <option value="$PROJECT_DIR$/bookmarklet_4.html" />
+        <option value="$PROJECT_DIR$/test_4.js" />
       </list>
     </option>
   </component>
@@ -766,19 +773,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_4.js">
+    <entry file="file://$PROJECT_DIR$/bookmarklet_4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3079" max-vertical-offset="6105">
-          <caret line="218" column="0" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="285">
+          <caret line="11" column="186" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="186" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarklet_4.html">
+    <entry file="file://$PROJECT_DIR$/test_4.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25821596" vertical-offset="0" max-vertical-offset="639">
-          <caret line="11" column="186" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="186" />
-          <folding />
+        <state vertical-scroll-proportion="0.8002958" vertical-offset="2534" max-vertical-offset="3525">
+          <caret line="205" column="14" selection-start-line="205" selection-start-column="14" selection-end-line="205" selection-end-column="14" />
+          <folding>
+            <element signature="e#5710#10388#0" expanded="false" />
+            <element signature="e#10414#10544#0" expanded="false" />
+            <element signature="e#10603#11054#0" expanded="false" />
+            <element signature="n#!!block;n#execute_test_suite#0" expanded="false" />
+            <element signature="n#!!block;n#loadCSS#0" expanded="false" />
+            <element signature="n#!!block;n#drawResults#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

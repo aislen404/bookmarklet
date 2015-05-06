@@ -197,10 +197,11 @@ var xUA_compatible_Detection = function () {
 
         if( x[i].httpEquiv.toString() === 'X-UA-Compatible'){
             txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content;
-        }else{
-            txt = txt + 'No X-UA-Compatible defined !!!';
         }
     }
+
+    if (txt='')
+        txt = txt + 'No X-UA-Compatible defined !!!';
 
    return txt;
 };
