@@ -191,19 +191,20 @@ var xUA_compatible_Detection = function () {
     var x = document.getElementsByTagName("META");
     var txt = '';
     var i;
+    var count = 0;
     if (x.length == 0)
         txt = 'no META tags in page !!!';
     for (i = 0; i < x.length; i++) {
 
         if( x[i].httpEquiv.toString() === 'X-UA-Compatible'){
             txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content;
+            count += 1 ;
         }
     }
 
-    if (txt==''){
-        txt = 'No X-UA-Compatible defined !!!';
+    if (count == 0){
+        txt = 'NO X-UA-Compatible META in document';
     }
-
    return txt;
 };
 
