@@ -195,9 +195,8 @@ var xUA_compatible_Detection = function () {
     if (x.length == 0)
         txt = 'no META tags in page !!!';
     for (i = 0; i < x.length; i++) {
-
         if( x[i].httpEquiv.toString() === 'X-UA-Compatible'){
-            txt = txt + 'http-equiv: '+ x[i].httpEquiv + ' content: ' + x[i].content;
+            txt = txt + '' + x[i].httpEquiv + ' content: ' + x[i].content;
             count += 1 ;
         }
     }

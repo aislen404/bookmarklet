@@ -26,12 +26,12 @@
       <file leaf-file-name="test_4.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57840234" vertical-offset="2594" max-vertical-offset="3555">
-              <caret line="199" column="23" selection-start-line="199" selection-start-column="23" selection-end-line="199" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.57840234" vertical-offset="2579" max-vertical-offset="3540">
+              <caret line="198" column="29" selection-start-line="198" selection-start-column="29" selection-end-line="198" selection-end-column="29" />
               <folding>
-                <element signature="e#5763#10441#0" expanded="false" />
-                <element signature="e#10467#10597#0" expanded="false" />
-                <element signature="e#10656#11107#0" expanded="false" />
+                <element signature="e#5751#10429#0" expanded="false" />
+                <element signature="e#10455#10585#0" expanded="false" />
+                <element signature="e#10644#11095#0" expanded="false" />
                 <element signature="n#!!block;n#execute_test_suite#0" expanded="false" />
                 <element signature="n#!!block;n#loadCSS#0" expanded="false" />
                 <element signature="n#!!block;n#drawResults#0" expanded="false" />
@@ -783,12 +783,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_4.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57840234" vertical-offset="2594" max-vertical-offset="3555">
-          <caret line="199" column="23" selection-start-line="199" selection-start-column="23" selection-end-line="199" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.57840234" vertical-offset="2579" max-vertical-offset="3540">
+          <caret line="198" column="29" selection-start-line="198" selection-start-column="29" selection-end-line="198" selection-end-column="29" />
           <folding>
-            <element signature="e#5763#10441#0" expanded="false" />
-            <element signature="e#10467#10597#0" expanded="false" />
-            <element signature="e#10656#11107#0" expanded="false" />
+            <element signature="e#5751#10429#0" expanded="false" />
+            <element signature="e#10455#10585#0" expanded="false" />
+            <element signature="e#10644#11095#0" expanded="false" />
             <element signature="n#!!block;n#execute_test_suite#0" expanded="false" />
             <element signature="n#!!block;n#loadCSS#0" expanded="false" />
             <element signature="n#!!block;n#drawResults#0" expanded="false" />
