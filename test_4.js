@@ -303,6 +303,19 @@ var doctype_Detection = function () {
     return 'DOCTYPE: ' + result.data.mode ;
 };
 
+var doctype_Detection_2 = function () {
+
+	var node = document.doctype;
+	var html = "<!DOCTYPE "
+			 + node.name
+			 + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '')
+			 + (!node.publicId && node.systemId ? ' SYSTEM' : '') 
+			 + (node.systemId ? ' "' + node.systemId + '"' : '')
+			 + '>';
+
+    return 'DOCTYPE: ' + html ;
+};
+
 var log = (function () {
     var log = [];
     return {
@@ -325,7 +338,7 @@ var  run_test_suite = function () {
     ];
 
     log.add(renderMode_Detection());
-    log.add(doctype_Detection());
+    log.add(doctype_Detection_2());
     log.add(layoutEngine_Detection());
     log.add(xUA_compatible_Detection());
     log.add(ieUserAgent_Detection());
