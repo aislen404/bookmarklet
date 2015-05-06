@@ -209,6 +209,8 @@ var xUA_compatible_Detection = function () {
 
 var doctype_Detection = function () {
 
+    var response;
+
     if (document.all[0].nodeValue == null){
         var re=/\s+(X?HTML)\s+([\d\.]+)\s*([^\/]+)*\//gi;
         var myversionInfo = {
@@ -222,7 +224,8 @@ var doctype_Detection = function () {
         myversionInfo.xhtml=RegExp.$1;
         myversionInfo.version=RegExp.$2;
         myversionInfo.importance=RegExp.$3;
-        return 'DOCTYPE: ' + myversionInfo.xhtml+' '+myversionInfo.version+' '+myversionInfo.importance ;
+
+        response = 'DOCTYPE: ' + myversionInfo.xhtml+' '+myversionInfo.version+' '+myversionInfo.importance ;
     }else{
 
         var spaces = '[\\s\\r\\n]*',
@@ -310,10 +313,10 @@ var doctype_Detection = function () {
                 }
             }
         }
-        return 'DOCTYPE: ' + result.data.mode ;
+        response = 'DOCTYPE: ' + result.data.mode ;
     }
 
-
+    return response;
 };
 
 var log = (function () {
