@@ -5,13 +5,13 @@
  * allows you to check the page that you are just visiting
  */
 
-var renderMode_Detection = function() {
+var renderMode_Detection = function () {
     var _renderMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
-    return 'Render Mode: '+_renderMode;
+    return 'Render Mode: ' + _renderMode;
 
 };
 
-var layoutEngine_Detection = function() {
+var layoutEngine_Detection = function () {
     var html = document.documentElement,
         style = html.style,
         vendor = ' vendor-',
@@ -31,39 +31,39 @@ var layoutEngine_Detection = function() {
     if ('-ms-scroll-limit' in style || 'behavior' in style) {
         cssClass += ie + vendor + ie;
         if ('-ms-ime-align' in style) {
-            cssClass += '-11'
+            cssClass += '-11';
             jsObject = {
                 vendor: ie,
                 version: 11
-            }
+            };
         }
         else if ('-ms-user-select' in style) {
-            cssClass += '-10'
+            cssClass += '-10';
             jsObject = {
                 vendor: ie,
                 version: 10
-            }
+            };
         }
         else if ('fill' in style) {
             cssClass += '-9';
             jsObject = {
                 vendor: ie,
                 version: 9
-            }
+            };
         }
         else if ('widows' in style) {
             cssClass += '-8';
             jsObject = {
                 vendor: ie,
                 version: 8
-            }
+            };
         }
         else {
             cssClass += '-7';
             jsObject = {
                 vendor: ie,
                 version: 7
-            }
+            };
         }
     }
     // WebKit
@@ -76,26 +76,26 @@ var layoutEngine_Detection = function() {
             jsObject = {
                 vendor: webkit,
                 browser: android
-            }
+            };
         }
         else if (!!window.chrome || ua.indexOf('OPR') >= 0) {
             cssClass += browser + chrome;
             jsObject = {
                 vendor: webkit,
                 browser: chrome
-            }
+            };
         }
         else if (!!window.wiiu) {
             cssClass += browser + wiiu;
             jsObject = {
                 vendor: webkit,
                 browser: wiiu
-            }
+            };
         }
         else {
             jsObject = {
                 vendor: webkit
-            }
+            };
         }
     }
     // Mozilla
@@ -103,7 +103,7 @@ var layoutEngine_Detection = function() {
         cssClass += mozilla;
         jsObject = {
             vendor: mozilla
-        }
+        };
     }
     // Opera
     else if ('OLink' in style || !!window.opera) {
@@ -113,12 +113,12 @@ var layoutEngine_Detection = function() {
             jsObject = {
                 vendor: opera,
                 version: 'mini'
-            }
+            };
         }
         else {
             jsObject = {
                 vendor: opera
-            }
+            };
         }
     }
     // KHTML
@@ -126,7 +126,7 @@ var layoutEngine_Detection = function() {
         cssClass += khtml;
         jsObject = {
             vendor: khtml
-        }
+        };
     }
     else {
         return false;
@@ -141,58 +141,58 @@ var ieUserAgent_Detection = function (){
 
     // Get the user agent string
     var ua = navigator.userAgent;
-
+    var val;
     this.compatibilityMode = false;
 
     // Detect whether or not the browser is IE
-    var ieRegex = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-    if (ieRegex.exec(ua) == null){
-        val = "The user agent detected does not containt Internet Explorer.";
+    var ieRegex = new RegExp('MSIE ([0-9]{1,}[\.0-9]{0,})');
+    if (ieRegex.exec(ua) === null){
+        val = 'The user agent detected does not containt Internet Explorer.';
     }else{
-        // Get the current "emulated" version of IE
+        // Get the current 'emulated' version of IE
         this.renderVersion = parseFloat(RegExp.$1);
         this.version = this.renderVersion;
 
         // Check the browser version with the rest of the agent string to detect compatibility mode
-        if (ua.indexOf("Trident/6.0") > -1) {
-            if (ua.indexOf("MSIE 7.0") > -1) {
+        if (ua.indexOf('Trident/6.0') > -1) {
+            if (ua.indexOf('MSIE 7.0') > -1) {
                 this.compatibilityMode = true;
                 this.version = 10;                  // IE 10
             }
         }
-        else if (ua.indexOf("Trident/5.0") > -1) {
-            if (ua.indexOf("MSIE 7.0") > -1) {
+        else if (ua.indexOf('Trident/5.0') > -1) {
+            if (ua.indexOf('MSIE 7.0') > -1) {
                 this.compatibilityMode = true;
                 this.version = 9;                   // IE 9
             }
         }
-        else if (ua.indexOf("Trident/4.0") > -1) {
-            if (ua.indexOf("MSIE 7.0") > -1) {
+        else if (ua.indexOf('Trident/4.0') > -1) {
+            if (ua.indexOf('MSIE 7.0') > -1) {
                 this.compatibilityMode = true;
                 this.version = 8;                   // IE 8
             }
         }
-        else if (ua.indexOf("MSIE 7.0") > -1){
+        else if (ua.indexOf('MSIE 7.0') > -1){
             this.version = 7;                       // IE 7
         }else{
             this.version = 6;                       // IE 6
         }
 
-        var val = "IE" + this.version;
+        val = 'IE' + this.version;
         if (this.compatibilityMode)
-            val += " Entering in Compatibility Mode (IE" + this.renderVersion + " emulation)";
-        return "We have detected the following IE browser: " + val;
+            val += ' Entering in Compatibility Mode (IE' + this.renderVersion + ' emulation)';
+        return 'We have detected the following IE browser: ' + val;
     }
     return val;
 };
 
 var xUA_compatible_Detection = function () {
 
-    var x = document.getElementsByTagName("META");
+    var x = document.getElementsByTagName('META');
     var txt = '';
     var i;
     var count = 0;
-    if (x.length == 0)
+    if (x.length === 0)
         txt = 'no META tags in page !!!';
     for (i = 0; i < x.length; i++) {
         if( x[i].httpEquiv.toString() === 'X-UA-Compatible'){
@@ -201,7 +201,7 @@ var xUA_compatible_Detection = function () {
         }
     }
 
-    if (count == 0){
+    if (count === 0){
         txt = 'NO X-UA-Compatible META in document';
     }
     return txt;
@@ -211,12 +211,12 @@ var doctype_Detection = function () {
 
     var response;
 
-    if (document.all[0].nodeValue != null){
+    if (document.all[0].nodeValue !== null){
         var re=/\s+(X?HTML)\s+([\d\.]+)\s*([^\/]+)*\//gi;
         var myversionInfo = {
-            xhtml : "",
-            version: "",
-            importance: ""
+            xhtml : '',
+            version: '',
+            importance: ''
         };
 
         re.exec(document.all[0].nodeValue);
@@ -236,10 +236,10 @@ var doctype_Detection = function () {
             pubsysRE = new RegExp('^(public|system)' + spaces + '"([^"]*)"' + spaces + '("[^"]*")?'),
             pubidRE = new RegExp('-//w3c//dtd (x?html)\\S*\\s*([\\d\\.]+)?\\s*(\\w+)?//en'),
             pubidMap = {
-                "iso/iec 15445:1999//dtd hypertext markup language//en": true,
-                "iso/iec 15445:1999//dtd html//en": true,
-                "-//ietf//dtd html i18n//en": true,
-                "-//unknown//en": true
+                'iso/iec 15445:1999//dtd hypertext markup language//en': true,
+                'iso/iec 15445:1999//dtd html//en': true,
+                '-//ietf//dtd html i18n//en': true,
+                '-//unknown//en': true
             };
 
         var ns = new XMLSerializer();
@@ -248,28 +248,28 @@ var doctype_Detection = function () {
         var head = website.slice(0, 2000).trim().toLowerCase(),
             dt = headRE.exec(head),
             result = {
-                testName: "doctype",
+                testName: 'doctype',
                 passed: false,
                 data: {
                     lineNumber: -1,
-                    mode : [ "No doctype" ]
+                    mode : [ 'No doctype' ]
                 }
             };
 
         if (dt) {
             // Since the regexp matched this should succeed as well
-            result.data.lineNumber = head.substr(0,head.indexOf("<!doctype")).split('\n').length;
-            if ( dt[1] !== "html" ) {
+            result.data.lineNumber = head.substr(0,head.indexOf('<!doctype')).split('\n').length;
+            if ( dt[1] !== 'html' ) {
                 // probably something like <!doctype svg ...> or other non-html, we don't want to error on these
                 result.passed = true;
-                result.data.mode = [ (dt[1] || "Unknown") + " (non-HTML)" ];
+                result.data.mode = [ (dt[1] || 'Unknown') + ' (non-HTML)' ];
             } else if ( !dt[2] ) {
                 // <!doctype html> (plain old html5 doctype without any following junk)
                 result.passed = true;
-                result.data.mode = [ "html5" ];
+                result.data.mode = [ 'html5' ];
             } else {
                 // Assume failure for simplicity
-                result.data.mode = [ "Invalid or Quirks doctype" ];
+                result.data.mode = [ 'Invalid or Quirks doctype' ];
 
                 // Should have PUBLIC or SYSTEM plus identifier(s)
                 var pubsys = pubsysRE.exec(dt[2]) || [],
@@ -277,18 +277,18 @@ var doctype_Detection = function () {
                     pubid = pubsys[2],
                     sysid = pubsys[3];
 
-                if ( puborsys === "system" ) {
+                if ( puborsys === 'system' ) {
                     // Any SYSTEM doctypes are considered to be standards mode
                     result.passed = true;
-                    result.data.mode = [ "html (system)" ];
-                } else  if ( pubid === "" && sysid === undefined ) {
-                    // <!doctype public ""> is standards mode
+                    result.data.mode = [ 'html (system)' ];
+                } else  if ( pubid === '' && sysid === undefined ) {
+                    // <!doctype public ''> is standards mode
                     result.passed = true;
-                    result.data.mode = [ "html5 (long form)" ];
+                    result.data.mode = [ 'html5 (long form)' ];
                 } else if ( pubidMap[pubid] ) {
-                    // One of the "OMG standards mode" bizarro doctypes
+                    // One of the 'OMG standards mode' bizarro doctypes
                     result.passed = true;
-                    result.data.mode = [ "html standards" ];
+                    result.data.mode = [ 'html standards' ];
                 } else if ( pubsys.length && pubid ) {
                     // Drill into the pubid to see if it's standards mode
                     var pubdata = pubidRE.exec(pubid) || [],
@@ -297,11 +297,11 @@ var doctype_Detection = function () {
                         variant = pubdata[3],
                         standards = pubdata.length > 0;
 
-                    if ( htmltype === "html" ) {
+                    if ( htmltype === 'html' ) {
                         if ( +version < 4.0 ) {
                             // Anything less than HTML4 is not standards
                             standards = false;
-                        } else if ( version === "4.0" || version === "4.01" ) {
+                        } else if ( version === '4.0' || version === '4.01' ) {
                             // HTML4 is only standards for frameset/transitional if a system id is provided
                             if ( /frameset|transitional/.test(variant) && !sysid ) {
                                 standards = false;
@@ -309,7 +309,7 @@ var doctype_Detection = function () {
                         }
                     }
                     result.passed = standards;
-                    result.data.mode = [(htmltype + " " + version + " " + variant).trim()];
+                    result.data.mode = [(htmltype + ' ' + version + ' ' + variant).trim()];
                 }
             }
         }
@@ -324,7 +324,7 @@ var log = (function () {
     return {
         add: function (msg) { log.push(msg); },
         show: function () { return log; }
-    }
+    };
 })();
 
 /* main program */
@@ -360,10 +360,10 @@ function execute_test_suite(){
     drawResults();
 
     for (var item in resultado) {
-        var node = document.createElement("li");                 // Create a <li> node
+        var node = document.createElement('li');                 // Create a <li> node
         var textnode = document.createTextNode(resultado[item]);         // Create a text node
         node.appendChild(textnode);                              // Append the text to <li>
-        document.getElementById("testResults").appendChild(node);     // Append <li> to <ul> with id="myList"
+        document.getElementById('testResults').appendChild(node);     // Append <li> to <ul> with id='myList'
         console.log(resultado[item]);
     }
 }
@@ -387,8 +387,8 @@ function loadCSS(){
 
 function drawResults (){
     var _body = document.getElementsByTagName('body');
-    var _div = document.createElement("div");
-    _div.innerHTML = '<div id="openModal" class="modalDialog" style="visibility: visible">' +
+    var _div = document.createElement('div');
+    _div.innerHTML = '<div id="openModal" class="modalDialog" style="visibility: hidden">' +
         '<div>	<a id="close_btn" href="javascript:(function(){toggle_visibility();})()" title="Close" class="close">X</a>' +
         '<ul id="testResults">' +
         '</ul>' +
@@ -399,8 +399,8 @@ function drawResults (){
 
 function toggle_visibility() {
     console.log('a ver que pasa por aqui');
-    el = document.getElementById("openModal");
-    el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+    el = document.getElementById('openModal');
+    el.style.visibility = (el.style.visibility == 'visible') ? 'hidden' : 'visible';
 }
 
 execute_test_suite();
